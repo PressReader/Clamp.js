@@ -1,7 +1,7 @@
 {
   "name": "clampjs",
   "main": "clamp.js",
-  "version": "0.0.2",
+  "version": "0.5.1",
   "homepage": "https://github.com/josephschmitt/Clamp.js",
   "authors": [
     "josephschmitt (me@joe.sh)"
@@ -13,6 +13,7 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "examples"
   ]
 }
