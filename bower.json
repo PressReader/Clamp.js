@@ -2,7 +2,7 @@
   "name": "clampjs",
   "main": "clamp.js",
   "version": "0.5.1",
-  "homepage": "https://github.com/josephschmitt/Clamp.js",
+  "homepage": "https://github.com/akoshelev/Clamp.js",
   "authors": [
     "josephschmitt (me@joe.sh)"
   ],
