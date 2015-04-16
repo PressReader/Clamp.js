@@ -257,5 +257,13 @@
         }
     }
 
-    window.$clamp = clamp;
+    // Register as a named AMD module, since jQuery can be concatenated with other
+    if (typeof define === "function" && define.amd) {
+        define("clamp", [], function() {
+            return clamp;
+        });
+    } else {
+        window.$clamp = clamp;
+    }
+
 })();
