@@ -61,7 +61,7 @@
                             });
                         }
                         return el.currentStyle && el.currentStyle[prop] ? el.currentStyle[prop] : null;
-                    }
+                    };
                     return this;
                 }
             }
@@ -170,7 +170,18 @@
                 applyEllipsis(target, chunks.join(splitChar));
             }
             //No more chunks can be removed using this character
-            else {
+            /* This condition was added because the logic work wrong
+               when clamping node with the following structure:
+               <p>
+                   "1"
+                   <br />
+                   "2"
+                   <br />
+                   "3"
+                   <br />
+               </p>
+            */
+            else if (chunks.length <= 1 && element.clientHeight > maxHeight) {
                 chunks = null;
             }
             
@@ -186,7 +197,11 @@
                 if (element.clientHeight <= maxHeight) {
                     //There's still more characters to try splitting on, not quite done yet
                     if (splitOnChars.length >= 0 && splitChar != '') {
-                        applyEllipsis(target, chunks.join(splitChar) + splitChar + lastChunk);
+                        var str = chunks.join(splitChar);
+                        if (lastChunk) {
+                            str += splitChar + lastChunk;
+                        }
+                        applyEllipsis(target, str);
                         chunks = null;
                     }
                     //Finished!
